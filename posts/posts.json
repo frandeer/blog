@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "browser-internals-guide-2025",
+      "title": "프론트엔드 개발자가 브라우저 내부를 알아야 하는 이유 (feat. 실전 학습 로드맵)",
+      "date": "2025-11-18",
+      "author": "Developer",
+      "excerpt": "렌더링 파이프라인부터 이벤트 루프, Reflow/Repaint 최적화까지. 느린 페이지를 10배 빠르게 만드는 실전 가이드. DevTools 마스터 + 4주 로드맵 포함.",
+      "tags": ["브라우저", "성능최적화", "프론트엔드", "JavaScript"],
+      "readTime": "28분",
+      "file": "browser-internals-guide-2025.md"
+    },
+    {
       "slug": "ai-skills-roadmap-2025-critical-guide",
       "title": "2025년 AI 학습 로드맵: '다 배워야 한다'는 거짓말을 깨고 진짜 필요한 것만",
       "date": "2025-11-18",
