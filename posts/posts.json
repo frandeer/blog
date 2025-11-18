@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "ai-designer-role-2026",
+      "title": "AI가 내 손을 대신하는 시대, 디자이너는 무엇을 해야 할까?",
+      "date": "2025-11-18",
+      "author": "Developer",
+      "excerpt": "2025년 AI가 바꾼 디자이너의 역할과 2026년 필수 트렌드 4가지. '만드는 사람'에서 '의미를 정하는 사람'으로의 전환을 쉽고 재미있게 풀어냅니다.",
+      "tags": ["AI", "디자인", "UX", "트렌드"],
+      "readTime": "18분",
+      "file": "ai-designer-role-2026.md"
+    },
+    {
       "slug": "how-to-fix-any-bug-detective-guide",
       "title": "AI도 못 잡은 버그를 잡는 4단계 탐정 기술",
       "date": "2025-11-18",
