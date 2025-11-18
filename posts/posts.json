@@ -1,0 +1,44 @@
+{
+  "posts": [
+    {
+      "slug": "welcome-to-my-blog",
+      "title": "개발자 블로그에 오신 것을 환영합니다",
+      "date": "2024-11-18",
+      "author": "Developer",
+      "excerpt": "새로운 개발자 블로그를 시작하며, 앞으로 어떤 내용을 다룰지 소개합니다.",
+      "tags": ["블로그", "소개"],
+      "readTime": "3분",
+      "file": "welcome-to-my-blog.md"
+    },
+    {
+      "slug": "javascript-async-await",
+      "title": "JavaScript Async/Await 완벽 가이드",
+      "date": "2024-11-15",
+      "author": "Developer",
+      "excerpt": "비동기 프로그래밍의 핵심인 async/await를 실전 예제와 함께 알아봅니다.",
+      "tags": ["JavaScript", "비동기", "Tutorial"],
+      "readTime": "8분",
+      "file": "javascript-async-await.md"
+    },
+    {
+      "slug": "css-flexbox-grid",
+      "title": "CSS Flexbox와 Grid 마스터하기",
+      "date": "2024-11-10",
+      "author": "Developer",
+      "excerpt": "모던 CSS 레이아웃의 양대 산맥인 Flexbox와 Grid를 비교하고 실습합니다.",
+      "tags": ["CSS", "레이아웃", "디자인"],
+      "readTime": "10분",
+      "file": "css-flexbox-grid.md"
+    },
+    {
+      "slug": "git-workflow-tips",
+      "title": "실무에서 유용한 Git 워크플로우",
+      "date": "2024-11-05",
+      "author": "Developer",
+      "excerpt": "팀 협업에 필수적인 Git 브랜치 전략과 커밋 컨벤션을 알아봅니다.",
+      "tags": ["Git", "협업", "DevOps"],
+      "readTime": "7분",
+      "file": "git-workflow-tips.md"
+    }
+  ]
+}
