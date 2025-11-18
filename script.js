@@ -11,6 +11,8 @@ const BLOG_CONFIG = {
 // ========================================
 let allPosts = [];
 let currentPost = null;
+let lastScrollTop = 0;
+let scrollTimeout = null;
 
 // ========================================
 // Theme Management
@@ -154,6 +156,51 @@ function renderPosts(posts) {
             loadPost(slug);
         });
     });
+
+    // 사이드바에도 글 목록 렌더링
+    renderSidebarPosts(posts);
+}
+
+// ========================================
+// Sidebar Posts Rendering
+// ========================================
+function renderSidebarPosts(posts) {
+    const sidebarContainer = document.getElementById('sidebar-posts');
+
+    if (!sidebarContainer) return;
+
+    // 최대 10개까지만 표시
+    const recentPosts = posts.slice(0, 10);
+
+    const sidebarHTML = recentPosts.map(post => `
+        <div class="sidebar-post-item" data-slug="${post.slug}">
+            <div class="sidebar-post-title">${escapeHtml(post.title)}</div>
+            <div class="sidebar-post-meta">
+                <span class="sidebar-post-date">📅 ${post.date}</span>
+                <span>⏱️ ${post.readTime || '5분'}</span>
+            </div>
+        </div>
+    `).join('');
+
+    sidebarContainer.innerHTML = sidebarHTML;
+
+    // Add click listeners
+    document.querySelectorAll('.sidebar-post-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const slug = item.dataset.slug;
+            loadPost(slug);
+        });
+    });
+}
+
+// 현재 글 활성화 표시
+function updateSidebarActivePost(slug) {
+    document.querySelectorAll('.sidebar-post-item').forEach(item => {
+        item.classList.remove('active');
+        if (item.dataset.slug === slug) {
+            item.classList.add('active');
+        }
+    });
 }
 
 // ========================================
@@ -204,6 +251,9 @@ async function loadPost(slug) {
 
         navigateToPage('post');
         currentPost = post;
+
+        // 사이드바 활성화 표시 업데이트
+        updateSidebarActivePost(slug);
 
     } catch (error) {
         console.error('Error loading post:', error);
@@ -272,3 +322,73 @@ function handleHashChange() {
         navigateToPage('home');
     }
 }
+
+// ========================================
+// Scroll Handler - Auto Hide/Show Navbar
+// ========================================
+function handleScroll() {
+    const navbar = document.querySelector('.navbar');
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    // 최상단에서는 항상 표시
+    if (scrollTop <= 100) {
+        navbar.classList.remove('navbar-hidden');
+        navbar.classList.remove('navbar-visible');
+        lastScrollTop = scrollTop;
+        return;
+    }
+
+    // 스크롤 방향 감지
+    if (scrollTop > lastScrollTop && scrollTop > 100) {
+        // 아래로 스크롤 - 숨김
+        navbar.classList.add('navbar-hidden');
+        navbar.classList.remove('navbar-visible');
+    } else if (scrollTop < lastScrollTop) {
+        // 위로 스크롤 - 표시
+        navbar.classList.remove('navbar-hidden');
+        navbar.classList.add('navbar-visible');
+    }
+
+    lastScrollTop = scrollTop;
+}
+
+// 스크롤 이벤트 리스너 (throttle 적용)
+window.addEventListener('scroll', () => {
+    if (scrollTimeout) {
+        window.cancelAnimationFrame(scrollTimeout);
+    }
+
+    scrollTimeout = window.requestAnimationFrame(() => {
+        handleScroll();
+        toggleScrollToTopButton();
+    });
+}, { passive: true });
+
+// ========================================
+// Scroll to Top Button
+// ========================================
+function toggleScrollToTopButton() {
+    const scrollToTopBtn = document.getElementById('scroll-to-top');
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > 300) {
+        scrollToTopBtn.classList.add('visible');
+    } else {
+        scrollToTopBtn.classList.remove('visible');
+    }
+}
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// 상단 이동 버튼 이벤트 리스너
+document.addEventListener('DOMContentLoaded', () => {
+    const scrollToTopBtn = document.getElementById('scroll-to-top');
+    if (scrollToTopBtn) {
+        scrollToTopBtn.addEventListener('click', scrollToTop);
+    }
+});
