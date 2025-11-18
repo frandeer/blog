@@ -1,6 +1,26 @@
 {
   "posts": [
     {
+      "slug": "ai-agents-coding-workflow-2025",
+      "title": "AI 에이전트로 코딩 시간 절반 날린 후기 (그런데 오히려 생산성은 2배)",
+      "date": "2025-11-18",
+      "author": "Developer",
+      "excerpt": "혼자서 모든 악기를 연주하던 개발자가 4명의 팀원(AI 에이전트)과 협업하는 오케스트라 지휘자가 된 이야기. SCCR 워크플로우로 57% 시간 절약한 실전 가이드.",
+      "tags": ["AI", "에이전트", "생산성", "워크플로우"],
+      "readTime": "25분",
+      "file": "ai-agents-coding-workflow-2025.md"
+    },
+    {
+      "slug": "claude-code-real-world-tips",
+      "title": "클로드 코드로 월 $200 날리기 전에 꼭 알아야 할 것들",
+      "date": "2025-11-18",
+      "author": "Developer",
+      "excerpt": "3개월 실전 사용 경험으로 배운 토큰 절약부터 MCP 활용까지. 비용은 줄이고 생산성은 높이는 진짜 노하우를 Feynman Technique으로 쉽게 풀어냅니다.",
+      "tags": ["Claude", "AI", "생산성", "개발도구"],
+      "readTime": "20분",
+      "file": "claude-code-real-world-tips.md"
+    },
+    {
       "slug": "ai-designer-role-2026",
       "title": "AI가 내 손을 대신하는 시대, 디자이너는 무엇을 해야 할까?",
       "date": "2025-11-18",
