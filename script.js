@@ -21,6 +21,7 @@ function initTheme() {
 
     document.documentElement.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme);
+    updateHighlightTheme(savedTheme);
 
     themeToggle.addEventListener('click', toggleTheme);
 }
@@ -32,11 +33,25 @@ function toggleTheme() {
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     updateThemeIcon(newTheme);
+    updateHighlightTheme(newTheme);
 }
 
 function updateThemeIcon(theme) {
     const themeIcon = document.querySelector('.theme-icon');
     themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+}
+
+function updateHighlightTheme(theme) {
+    const lightTheme = document.getElementById('highlight-light');
+    const darkTheme = document.getElementById('highlight-dark');
+
+    if (theme === 'dark') {
+        lightTheme.disabled = true;
+        darkTheme.disabled = false;
+    } else {
+        lightTheme.disabled = false;
+        darkTheme.disabled = true;
+    }
 }
 
 // ========================================
@@ -224,7 +239,17 @@ document.addEventListener('DOMContentLoaded', () => {
             breaks: true,
             gfm: true,
             headerIds: true,
-            mangle: false
+            mangle: false,
+            highlight: function(code, lang) {
+                if (lang && hljs.getLanguage(lang)) {
+                    try {
+                        return hljs.highlight(code, { language: lang }).value;
+                    } catch (err) {
+                        console.error('Highlight error:', err);
+                    }
+                }
+                return hljs.highlightAuto(code).value;
+            }
         });
     }
 });
