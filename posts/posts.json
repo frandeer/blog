@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "ai-skills-roadmap-2025-critical-guide",
+      "title": "2025년 AI 학습 로드맵: '다 배워야 한다'는 거짓말을 깨고 진짜 필요한 것만",
+      "date": "2025-11-18",
+      "author": "Developer",
+      "excerpt": "초급(1개월) → 중급(6개월) → 고급(1년+) 단계별 로드맵. 선행지식, 학습 자료, 실전 프로젝트까지. 목표에 맞는 현실적인 AI 학습 가이드북.",
+      "tags": ["AI", "학습", "로드맵", "가이드"],
+      "readTime": "30분",
+      "file": "ai-skills-roadmap-2025-critical-guide.md"
+    },
+    {
       "slug": "ai-agents-coding-workflow-2025",
       "title": "AI 에이전트로 코딩 시간 절반 날린 후기 (그런데 오히려 생산성은 2배)",
       "date": "2025-11-18",
