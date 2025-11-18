@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "how-to-fix-any-bug-detective-guide",
+      "title": "AI도 못 잡은 버그를 잡는 4단계 탐정 기술",
+      "date": "2025-11-18",
+      "author": "Developer",
+      "excerpt": "Dan Abramov의 실제 사례로 배우는 체계적인 디버깅 방법. AI도 실패한 버그를 4단계로 해결하는 과학적 접근법을 Feynman Technique으로 쉽게 설명합니다.",
+      "tags": ["디버깅", "문제해결", "React", "개발방법론"],
+      "readTime": "12분",
+      "file": "how-to-fix-any-bug-detective-guide.md"
+    },
+    {
       "slug": "claude-skills-guide",
       "title": "Claude Skills: AI 에이전트 시대의 새로운 패러다임",
       "date": "2024-11-18",
