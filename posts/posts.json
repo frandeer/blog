@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "claude-code-agents-realistic-guide",
+      "title": "Claude Code 에이전트, 97%가 실패한다고? 진짜 문제는 따로 있습니다",
+      "date": "2025-11-18",
+      "author": "Developer",
+      "excerpt": "과대광고 vs 현실. Context Window 관리부터 멀티 에이전트 오케스트라까지. 3개월 실전 경험으로 배운 진짜 사용법. 실패 사례 포함 솔직 후기.",
+      "tags": ["Claude", "AI에이전트", "개발도구", "실전가이드"],
+      "readTime": "32분",
+      "file": "claude-code-agents-realistic-guide.md"
+    },
+    {
       "slug": "browser-internals-guide-2025",
       "title": "프론트엔드 개발자가 브라우저 내부를 알아야 하는 이유 (feat. 실전 학습 로드맵)",
       "date": "2025-11-18",
