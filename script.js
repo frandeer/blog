@@ -431,6 +431,25 @@ function handleScroll() {
     lastScrollTop = scrollTop;
 }
 
+// Update reading progress bar
+function updateReadingProgress() {
+    const progressBar = document.getElementById('reading-progress');
+    if (!progressBar) return;
+
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    // 스크롤 가능한 전체 높이
+    const scrollableHeight = documentHeight - windowHeight;
+
+    // 현재 스크롤 진행률 (0-100%)
+    const progress = (scrollTop / scrollableHeight) * 100;
+
+    // 프로그레스 바 너비 업데이트
+    progressBar.style.width = `${Math.min(progress, 100)}%`;
+}
+
 // 스크롤 이벤트 리스너 (throttle 적용)
 window.addEventListener('scroll', () => {
     if (scrollTimeout) {
@@ -440,6 +459,7 @@ window.addEventListener('scroll', () => {
     scrollTimeout = window.requestAnimationFrame(() => {
         handleScroll();
         toggleScrollToTopButton();
+        updateReadingProgress();
     });
 }, { passive: true });
 
