@@ -274,12 +274,27 @@ a:not(.nav-link):not(.back-button):hover::after {
 }
 
 /* ========================================
+   Reading Progress Bar
+   ======================================== */
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background: var(--bg-gradient);
+    z-index: 1001;
+    transition: width 0.1s ease-out;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+/* ========================================
    Main Content Layout - Two Column
    ======================================== */
 .main-wrapper {
     display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: 3rem;
+    grid-template-columns: 1fr 260px;
+    gap: 2.5rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
     min-height: calc(100vh - 200px);
@@ -287,6 +302,7 @@ a:not(.nav-link):not(.back-button):hover::after {
 
 .main-content {
     min-width: 0; /* flex/grid 컨텐츠 오버플로우 방지 */
+    max-width: 900px; /* 가독성을 위한 최대 너비 */
 }
 
 .page {
@@ -888,11 +904,17 @@ a:not(.nav-link):not(.back-button):hover::after {
     backdrop-filter: blur(10px);
     border: 1px solid var(--border-color-light);
     border-radius: 16px;
-    padding: 1.5rem;
+    padding: 1.25rem;
     box-shadow: var(--shadow-sm);
     max-height: calc(100vh - 140px);
     overflow-y: auto;
     animation: slideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-sticky:hover {
+    opacity: 1;
 }
 
 @keyframes slideInRight {
