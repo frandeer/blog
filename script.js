@@ -88,6 +88,16 @@ function navigateToPage(pageName) {
     });
     document.getElementById(`${pageName}-page`).classList.add('active');
 
+    // Update URL hash and meta tags based on page
+    if (pageName === 'home') {
+        window.location.hash = '';
+        resetMetaTags();
+    } else if (pageName === 'about') {
+        window.location.hash = 'about';
+        resetMetaTags();
+    }
+    // Note: 'post' page hash is updated in loadPost()
+
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -252,6 +262,12 @@ async function loadPost(slug) {
         navigateToPage('post');
         currentPost = post;
 
+        // Update URL hash for SEO and sharing
+        window.location.hash = `post/${slug}`;
+
+        // Update meta tags for SEO
+        updateMetaTags(post);
+
         // 사이드바 활성화 표시 업데이트
         updateSidebarActivePost(slug);
 
@@ -273,6 +289,66 @@ function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+}
+
+// Update meta tags for SEO
+function updateMetaTags(post) {
+    const baseUrl = 'https://frandeer.github.io/blog/';
+    const postUrl = `${baseUrl}#post/${post.slug}`;
+
+    // Update page title
+    document.title = `${post.title} - FRANDEER DEV`;
+
+    // Update or create meta description
+    updateOrCreateMeta('name', 'description', post.excerpt);
+    updateOrCreateMeta('name', 'keywords', post.tags ? post.tags.join(', ') : '');
+
+    // Update Open Graph tags
+    updateOrCreateMeta('property', 'og:title', post.title);
+    updateOrCreateMeta('property', 'og:description', post.excerpt);
+    updateOrCreateMeta('property', 'og:url', postUrl);
+    updateOrCreateMeta('property', 'og:type', 'article');
+
+    // Update Twitter Card tags
+    updateOrCreateMeta('property', 'twitter:title', post.title);
+    updateOrCreateMeta('property', 'twitter:description', post.excerpt);
+    updateOrCreateMeta('property', 'twitter:url', postUrl);
+
+    // Update canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+        canonical.href = postUrl;
+    }
+}
+
+// Helper function to update or create meta tags
+function updateOrCreateMeta(attr, attrValue, content) {
+    let element = document.querySelector(`meta[${attr}="${attrValue}"]`);
+    if (element) {
+        element.content = content;
+    } else {
+        element = document.createElement('meta');
+        element.setAttribute(attr, attrValue);
+        element.content = content;
+        document.head.appendChild(element);
+    }
+}
+
+// Reset meta tags to default (for home page)
+function resetMetaTags() {
+    document.title = 'FRANDEER DEV - 개발자 블로그';
+    const baseUrl = 'https://frandeer.github.io/blog/';
+
+    updateOrCreateMeta('name', 'description', '웹 개발, JavaScript, AI, 개발 도구에 대한 실전 경험과 통찰을 공유하는 FRANDEER의 개발자 블로그입니다. Claude Skills, React, TypeScript 등 최신 기술 트렌드를 다룹니다.');
+    updateOrCreateMeta('property', 'og:title', 'FRANDEER DEV - 개발자 블로그');
+    updateOrCreateMeta('property', 'og:description', '웹 개발, JavaScript, AI, 개발 도구에 대한 실전 경험과 통찰을 공유하는 FRANDEER의 개발자 블로그입니다.');
+    updateOrCreateMeta('property', 'og:url', baseUrl);
+    updateOrCreateMeta('property', 'og:type', 'website');
+
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+        canonical.href = baseUrl;
+    }
 }
 
 // ========================================
@@ -315,10 +391,13 @@ function handleHashChange() {
 
     if (hash.startsWith('post/')) {
         const slug = hash.substring(5);
-        loadPost(slug);
+        // Only load if it's a different post
+        if (!currentPost || currentPost.slug !== slug) {
+            loadPost(slug);
+        }
     } else if (hash === 'about') {
         navigateToPage('about');
-    } else {
+    } else if (hash === '' || hash === 'home') {
         navigateToPage('home');
     }
 }
