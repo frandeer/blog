@@ -40,7 +40,7 @@ function toggleTheme() {
 
 function updateThemeIcon(theme) {
     const themeIcon = document.querySelector('.theme-icon');
-    themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    themeIcon.textContent = theme === 'dark' ? 'light_mode' : 'dark_mode';
 }
 
 function updateHighlightTheme(theme) {
@@ -144,8 +144,8 @@ function renderPosts(posts) {
             <div class="post-card-header">
                 <h3 class="post-card-title">${escapeHtml(post.title)}</h3>
                 <div class="post-card-meta">
-                    <span>📅 ${post.date}</span>
-                    <span>⏱️ ${post.readTime || '5분'}</span>
+                    <span><span class="material-icons">event</span> ${post.date}</span>
+                    <span><span class="material-icons">schedule</span> ${post.readTime || '5분'}</span>
                 </div>
             </div>
             <p class="post-card-excerpt">${escapeHtml(post.excerpt)}</p>
@@ -186,8 +186,8 @@ function renderSidebarPosts(posts) {
         <div class="sidebar-post-item" data-slug="${post.slug}">
             <div class="sidebar-post-title">${escapeHtml(post.title)}</div>
             <div class="sidebar-post-meta">
-                <span class="sidebar-post-date">📅 ${post.date}</span>
-                <span>⏱️ ${post.readTime || '5분'}</span>
+                <span class="sidebar-post-date"><span class="material-icons">event</span> ${post.date}</span>
+                <span><span class="material-icons">schedule</span> ${post.readTime || '5분'}</span>
             </div>
         </div>
     `).join('');
@@ -241,9 +241,9 @@ async function loadPost(slug) {
             <div class="post-header">
                 <h1 class="post-title">${escapeHtml(post.title)}</h1>
                 <div class="post-meta">
-                    <span>📅 ${post.date}</span>
-                    <span>⏱️ ${post.readTime || '5분'}</span>
-                    ${post.author ? `<span>✍️ ${escapeHtml(post.author)}</span>` : ''}
+                    <span><span class="material-icons">event</span> ${post.date}</span>
+                    <span><span class="material-icons">schedule</span> ${post.readTime || '5분'}</span>
+                    ${post.author ? `<span><span class="material-icons">person</span> ${escapeHtml(post.author)}</span>` : ''}
                 </div>
                 ${post.tags ? `
                     <div class="post-card-tags" style="margin-top: 1rem;">
