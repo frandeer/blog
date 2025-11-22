@@ -1,6 +1,26 @@
 {
   "posts": [
     {
+      "slug": "claude-code-agents-orchestration-guide",
+      "title": "97%의 개발자가 Claude Code 에이전트를 10분 안에 망가뜨리는 이유",
+      "date": "2025-11-22",
+      "author": "FRANDEER",
+      "excerpt": "72시간 동안 같은 모듈을 17번 다시 작성한 9명의 시니어 엔지니어. 320만 토큰의 무한 루프. 4-Layer Orchestra Architecture로 3%만 아는 무적 멀티 에이전트 시스템 구축법.",
+      "tags": ["Claude Code", "AI", "에이전트", "오케스트레이션", "멀티에이전트"],
+      "readTime": "30분",
+      "file": "claude-code-agents-orchestration-guide.md"
+    },
+    {
+      "slug": "google-context-engineering-guide-2025",
+      "title": "구글이 공개한 70페이지 Context Engineering 가이드: AI가 당신을 기억하는 법",
+      "date": "2025-11-22",
+      "author": "FRANDEER",
+      "excerpt": "매일 가는 카페 바리스타처럼 AI도 당신을 기억할 수 있습니다. 구글이 공개한 Context Engineering 백서 핵심 정리. 세션, 메모리, RAG의 차이부터 실전 구현까지.",
+      "tags": ["AI", "Context Engineering", "LLM", "Google", "메모리"],
+      "readTime": "25분",
+      "file": "google-context-engineering-guide-2025.md"
+    },
+    {
       "slug": "browser-internals-guide-2025",
       "title": "프론트엔드 개발자가 브라우저 내부를 알아야 하는 이유 (feat. 실전 학습 로드맵)",
       "date": "2025-11-18",
